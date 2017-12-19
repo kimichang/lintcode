@@ -2,10 +2,17 @@
 #include <math.h>
 using namespace std;
 
+int aplusb(int a,int b){
+	if(b==0) return a;
+	int sum = a^b;
+	int carry = (a&b)<<1;
+	return aplusb(sum,carry);
+}
+
 
 int main()
 {
-	int a,b,c[32],d[32],rem,result;
+/*	int a,b,c[32],d[32],rem,result;
 	int e[32]={0};
 	int i=0, j=0;
 	a = 1;
@@ -55,6 +62,9 @@ int main()
 	
 	cout<<"result is :"<<result<<endl;
 //	cout<<"2^2 ="<<2^2<<endl;
+*/
+	int c = aplusb(100,-100);
+	cout<<c<<endl;
 
 }
 
