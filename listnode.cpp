@@ -9,17 +9,17 @@ struct ListNode{
 
 ListNode * removeElements(ListNode* head,int val){
 	ListNode * p = head;
-	while(p->next != NULL){
+	while(p){
 		if(val == p->val){
 			p = p->next;
 			//p->next = (p->next)->next;
 			//p = p->next;
 		}
 		else if(val == p->next->val)
-		{   if(p->next != NULL){
+		{   
 			p->next = p->next->next;
 			p = p->next;
-							   }
+							   
 		}else
 
 			p = p->next;
