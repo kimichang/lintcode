@@ -10,6 +10,8 @@ struct ListNode{
 ListNode * removeElements(ListNode* head,int val){
 	ListNode * p = head;
 	ListNode tmp = NULL;
+	ListNode* pre = NULL;
+
 	while(p){
 		if(val == p->val){
 			tmp = *p;
@@ -24,11 +26,13 @@ ListNode * removeElements(ListNode* head,int val){
 		{   
 			if(p->next == NULL)
 			  return NULL;
+			pre = p;
 			p->next = p->next->next;
+			
 			p = p->next;
 							   
 		}else
-
+			pre = p;
 			p = p->next;
 	}
 	return head;
