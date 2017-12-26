@@ -16,25 +16,38 @@ vector<string> fizzBuzz(int n){
 	for(int i = 0; i < n; i++)
 	{
 		switch((i+1)%3){
-			case 1:
-				result.push_back(to_string(i+1));
-				break;
-			case 2:
+			default:
 				result.push_back(to_string(i+1));
 				break;
 			case 0:
-				if((i+1)%5 == 0)
+				result.push_back("fizz");
+				break;
+				}
+		switch((i+1)%5){
+			case 0:
+				if((i+1)%3 == 0)
 				{
-					result.push_back("fizz");
+					result.at(i) = result.at(1).append(" buzz");
+					break;
+				}else
+				{
+					result.at(i) = "buzz";
 					break;
 				}
-				else
-				{
-					result.push_back("fizz");
-					break;
-				}
+			default:
+				break;
 		}
+		}
+	return result;
 	}
+
+int main()
+{
+	vector<string> aa = fizzBuzz(15);
+	for(int index = 0; index < aa.size(); index++)
+	  cout<<aa.at(index)<<endl;
+
 }
+
 
 
