@@ -1,5 +1,8 @@
 #include <stack>
 #include <iostream>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
 class MinStack {
@@ -9,36 +12,25 @@ class MinStack {
 			tmp = stack<int>();
 		}
 
-		int minnumber = 0;
-		int count = 0;
-
+		int rush = 0;
+		vector<int> attend;
+		int index = 0;
+		vector<int>::iterator it;
 		void push(int number){
-			if(count == 0)
-			{
-				minnumber = number;
-				count++;
-				tmp.push(number);
-				return;
-			}
-			if(number <= minnumber)
-			{
-				minnumber = number ;
-				count++;
-				tmp.push(number);
-				return ;
-			}
-			else{
-				count++;
-				tmp.push(number);
-				return;
-			}
+			tmp.push(number);
+			attend.push_back(number);
 		}
 
 		int pop(){
+			rush = tmp.top();
 			tmp.pop();
+			cout<<"pop :"<<rush<<endl;
+			it = find(attend.begin(),attend.end(),rush);
+			attend.erase(it);
 		}
 		int min(){
-			return minnumber;
+			sort(attend.begin(),attend.end());
+			return attend.at(0);
 		}
 };
 
